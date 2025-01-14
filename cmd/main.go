@@ -1,10 +1,11 @@
 package main
 
 import (
-	"github.com/labstack/echo/v4"
-	"github.com/labstack/echo/v4/middleware"
 	"html/template"
 	"io"
+
+	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 )
 
 type Templates struct {
@@ -21,15 +22,20 @@ func newTemplate() *Templates {
 	}
 }
 
+var id = 0
+
 type Contact struct {
 	Name  string
 	Email string
+	Id    int
 }
 
 func newContact(name, email string) Contact {
+	id++
 	return Contact{
 		Name:  name,
 		Email: email,
+		Id:    id,
 	}
 }
 
